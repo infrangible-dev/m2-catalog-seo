@@ -1,0 +1,571 @@
+<?xml version="1.0"?>
+
+<!--
+ * @author      Andreas Knollmann
+ * @copyright   2014-2024 Softwareentwicklung Andreas Knollmann
+ * @license     http://www.opensource.org/licenses/mit-license.php MIT
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="infrangible_catalogseo" sortOrder="70" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+            <tab>infrangible</tab>
+            <class>separator-top</class>
+            <label>Search Engine Optimizations</label>
+            <resource>Infrangible_CatalogSeo::config_infrangible_catalogseo</resource>
+            <group id="page" sortOrder="10" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Page</label>
+                <field id="title_max_length" type="text" sortOrder="10" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Max Length Title</label>
+                </field>
+                <field id="title_max_description" type="text" sortOrder="20" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Max Length Description</label>
+                </field>
+                <field id="home_canonical_tag" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Use Canonical Link Meta Tag For Home</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="cms_canonical_tag" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Use Canonical Link Meta Tag For CMS Pages</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="rich_snippets" sortOrder="20" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Rich Snippets</label>
+                <field id="website" type="select" sortOrder="10" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Website</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="search_action" type="select" sortOrder="20" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Search Action</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                    <depends>
+                        <field id="website">1</field>
+                    </depends>
+                </field>
+                <field id="organization" type="select" sortOrder="100" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Organization</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="organization_type" type="select" sortOrder="101" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Type</label>
+                    <source_model>Infrangible\CatalogSeo\Model\Config\Source\Store</source_model>
+                    <depends>
+                        <field id="organization">1</field>
+                    </depends>
+                </field>
+                <field id="currencies_accepted" type="textarea" sortOrder="102" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Currencies Accepted</label>
+                    <depends>
+                        <field id="organization">1</field>
+                    </depends>
+                </field>
+                <field id="opening_hours" type="textarea" sortOrder="103" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Opening Hours</label>
+                    <depends>
+                        <field id="organization">1</field>
+                    </depends>
+                </field>
+                <field id="payment_accepted" type="textarea" sortOrder="104" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Payment Accepted</label>
+                    <depends>
+                        <field id="organization">1</field>
+                    </depends>
+                </field>
+                <field id="price_range" type="text" sortOrder="105" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Price Range</label>
+                    <depends>
+                        <field id="organization">1</field>
+                    </depends>
+                </field>
+                <field id="same_as" type="textarea" sortOrder="106" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Same As</label>
+                    <depends>
+                        <field id="organization">1</field>
+                    </depends>
+                </field>
+                <field id="street_address" type="text" sortOrder="110" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Street</label>
+                    <depends>
+                        <field id="organization">1</field>
+                    </depends>
+                </field>
+                <field id="postal_code" type="text" sortOrder="111" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Postal Code</label>
+                    <depends>
+                        <field id="organization">1</field>
+                    </depends>
+                </field>
+                <field id="address_locality" type="text" sortOrder="112" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>City</label>
+                    <depends>
+                        <field id="organization">1</field>
+                    </depends>
+                </field>
+                <field id="address_country" type="select" sortOrder="113" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Country</label>
+                    <source_model>Magento\Directory\Model\Config\Source\Country</source_model>
+                    <depends>
+                        <field id="organization">1</field>
+                    </depends>
+                </field>
+                <field id="product" type="select" sortOrder="200" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Product</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="aggregate_offer" type="select" sortOrder="201" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Aggregate Offer</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="product">1</field>
+                    </depends>
+                </field>
+                <field id="aggregate_rating" type="select" sortOrder="205" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Aggregate Rating</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="product">1</field>
+                    </depends>
+                </field>
+                <field id="aggregate_rating_scale" type="select" sortOrder="206" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Use 0...100 scale</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="product">1</field>
+                        <field id="aggregate_rating">1</field>
+                    </depends>
+                </field>
+                <field id="review" type="select" sortOrder="207" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Reviews</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="product">1</field>
+                    </depends>
+                </field>
+                <field id="brand" type="select" sortOrder="210" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Brand</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="product">1</field>
+                    </depends>
+                </field>
+                <field id="brand_attribute_id" type="select" sortOrder="211" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Brand Attribute</label>
+                    <source_model>Infrangible\Core\Model\Config\Source\Attribute</source_model>
+                    <depends>
+                        <field id="product">1</field>
+                        <field id="brand">1</field>
+                    </depends>
+                </field>
+                <field id="brand_attribute_id_backup" type="select" sortOrder="212" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Brand Attribute (Backup)</label>
+                    <source_model>Infrangible\Core\Model\Config\Source\Attribute</source_model>
+                    <depends>
+                        <field id="product">1</field>
+                        <field id="brand">1</field>
+                    </depends>
+                </field>
+                <field id="color" type="select" sortOrder="220" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Color</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="product">1</field>
+                    </depends>
+                </field>
+                <field id="color_attribute_id" type="select" sortOrder="221" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Color Attribute</label>
+                    <source_model>Infrangible\Core\Model\Config\Source\Attribute</source_model>
+                    <depends>
+                        <field id="product">1</field>
+                        <field id="color">1</field>
+                    </depends>
+                </field>
+                <field id="color_attribute_id_backup" type="select" sortOrder="222" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Color Attribute (Backup)</label>
+                    <source_model>Infrangible\Core\Model\Config\Source\Attribute</source_model>
+                    <depends>
+                        <field id="product">1</field>
+                        <field id="color">1</field>
+                    </depends>
+                </field>
+                <field id="description" type="select" sortOrder="230" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Description</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="product">1</field>
+                    </depends>
+                </field>
+                <field id="description_attribute_id" type="select" sortOrder="231" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Description Attribute</label>
+                    <source_model>Infrangible\Core\Model\Config\Source\Attribute</source_model>
+                    <depends>
+                        <field id="product">1</field>
+                        <field id="color">1</field>
+                    </depends>
+                </field>
+                <field id="description_attribute_id_backup" type="select" sortOrder="232" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Description Attribute (Backup)</label>
+                    <source_model>Infrangible\Core\Model\Config\Source\Attribute</source_model>
+                    <depends>
+                        <field id="product">1</field>
+                        <field id="color">1</field>
+                    </depends>
+                </field>
+                <field id="depth" type="select" sortOrder="240" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Depth</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="product">1</field>
+                    </depends>
+                </field>
+                <field id="depth_attribute_id" type="select" sortOrder="241" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Depth Attribute</label>
+                    <source_model>Infrangible\Core\Model\Config\Source\Attribute</source_model>
+                    <depends>
+                        <field id="product">1</field>
+                        <field id="depth">1</field>
+                    </depends>
+                </field>
+                <field id="depth_attribute_id_backup" type="select" sortOrder="242" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Depth Attribute (Backup)</label>
+                    <source_model>Infrangible\Core\Model\Config\Source\Attribute</source_model>
+                    <depends>
+                        <field id="product">1</field>
+                        <field id="depth">1</field>
+                    </depends>
+                </field>
+                <field id="gtin" type="select" sortOrder="250" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>gtin</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="product">1</field>
+                    </depends>
+                </field>
+                <field id="gtin_attribute_id" type="select" sortOrder="251" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>gtin Attribute</label>
+                    <source_model>Infrangible\Core\Model\Config\Source\Attribute</source_model>
+                    <depends>
+                        <field id="product">1</field>
+                        <field id="gtin">1</field>
+                    </depends>
+                </field>
+                <field id="gtin_attribute_id_backup" type="select" sortOrder="252" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>gtin Attribute (Backup)</label>
+                    <source_model>Infrangible\Core\Model\Config\Source\Attribute</source_model>
+                    <depends>
+                        <field id="product">1</field>
+                        <field id="gtin">1</field>
+                    </depends>
+                </field>
+                <field id="gtin8" type="select" sortOrder="260" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>gtin-8</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="product">1</field>
+                    </depends>
+                </field>
+                <field id="gtin8_attribute_id" type="select" sortOrder="261" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>gtin-8 Attribute</label>
+                    <source_model>Infrangible\Core\Model\Config\Source\Attribute</source_model>
+                    <depends>
+                        <field id="product">1</field>
+                        <field id="gtin8">1</field>
+                    </depends>
+                </field>
+                <field id="gtin8_attribute_id_backup" type="select" sortOrder="262" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>gtin-8 Attribute (Backup)</label>
+                    <source_model>Infrangible\Core\Model\Config\Source\Attribute</source_model>
+                    <depends>
+                        <field id="product">1</field>
+                        <field id="gtin8">1</field>
+                    </depends>
+                </field>
+                <field id="gtin12" type="select" sortOrder="270" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>gtin-12</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="product">1</field>
+                    </depends>
+                </field>
+                <field id="gtin12_attribute_id" type="select" sortOrder="271" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>gtin-12 Attribute</label>
+                    <source_model>Infrangible\Core\Model\Config\Source\Attribute</source_model>
+                    <depends>
+                        <field id="product">1</field>
+                        <field id="gtin12">1</field>
+                    </depends>
+                </field>
+                <field id="gtin12_attribute_id_backup" type="select" sortOrder="272" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>gtin-12 Attribute (Backup)</label>
+                    <source_model>Infrangible\Core\Model\Config\Source\Attribute</source_model>
+                    <depends>
+                        <field id="product">1</field>
+                        <field id="gtin12">1</field>
+                    </depends>
+                </field>
+                <field id="gtin13" type="select" sortOrder="280" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>gtin-13</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="product">1</field>
+                    </depends>
+                </field>
+                <field id="gtin13_attribute_id" type="select" sortOrder="281" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>gtin-13 Attribute</label>
+                    <source_model>Infrangible\Core\Model\Config\Source\Attribute</source_model>
+                    <depends>
+                        <field id="product">1</field>
+                        <field id="gtin13">1</field>
+                    </depends>
+                </field>
+                <field id="gtin13_attribute_id_backup" type="select" sortOrder="282" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>gtin-13 Attribute (Backup)</label>
+                    <source_model>Infrangible\Core\Model\Config\Source\Attribute</source_model>
+                    <depends>
+                        <field id="product">1</field>
+                        <field id="gtin13">1</field>
+                    </depends>
+                </field>
+                <field id="gtin14" type="select" sortOrder="290" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>gtin-14</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="product">1</field>
+                    </depends>
+                </field>
+                <field id="gtin14_attribute_id" type="select" sortOrder="291" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>gtin-14 Attribute</label>
+                    <source_model>Infrangible\Core\Model\Config\Source\Attribute</source_model>
+                    <depends>
+                        <field id="product">1</field>
+                        <field id="gtin14">1</field>
+                    </depends>
+                </field>
+                <field id="gtin14_attribute_id_backup" type="select" sortOrder="292" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>gtin-14 Attribute (Backup)</label>
+                    <source_model>Infrangible\Core\Model\Config\Source\Attribute</source_model>
+                    <depends>
+                        <field id="product">1</field>
+                        <field id="gtin14">1</field>
+                    </depends>
+                </field>
+                <field id="height" type="select" sortOrder="300" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Height</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="product">1</field>
+                    </depends>
+                </field>
+                <field id="height_attribute_id" type="select" sortOrder="301" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Height Attribute</label>
+                    <source_model>Infrangible\Core\Model\Config\Source\Attribute</source_model>
+                    <depends>
+                        <field id="product">1</field>
+                        <field id="height">1</field>
+                    </depends>
+                </field>
+                <field id="height_attribute_id_backup" type="select" sortOrder="302" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Height Attribute (Backup)</label>
+                    <source_model>Infrangible\Core\Model\Config\Source\Attribute</source_model>
+                    <depends>
+                        <field id="product">1</field>
+                        <field id="height">1</field>
+                    </depends>
+                </field>
+                <field id="manufacturer" type="select" sortOrder="310" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Manufacturer</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="product">1</field>
+                    </depends>
+                </field>
+                <field id="manufacturer_attribute_id" type="select" sortOrder="311" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Manufacturer Attribute</label>
+                    <source_model>Infrangible\Core\Model\Config\Source\Attribute</source_model>
+                    <depends>
+                        <field id="product">1</field>
+                        <field id="manufacturer">1</field>
+                    </depends>
+                </field>
+                <field id="manufacturer_attribute_id_backup" type="select" sortOrder="312" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Manufacturer Attribute (Backup)</label>
+                    <source_model>Infrangible\Core\Model\Config\Source\Attribute</source_model>
+                    <depends>
+                        <field id="product">1</field>
+                        <field id="manufacturer">1</field>
+                    </depends>
+                </field>
+                <field id="material" type="select" sortOrder="320" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Material</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="product">1</field>
+                    </depends>
+                </field>
+                <field id="material_attribute_id" type="select" sortOrder="321" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Material Attribute</label>
+                    <source_model>Infrangible\Core\Model\Config\Source\Attribute</source_model>
+                    <depends>
+                        <field id="product">1</field>
+                        <field id="material">1</field>
+                    </depends>
+                </field>
+                <field id="material_attribute_id_backup" type="select" sortOrder="322" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Material Attribute (Backup)</label>
+                    <source_model>Infrangible\Core\Model\Config\Source\Attribute</source_model>
+                    <depends>
+                        <field id="product">1</field>
+                        <field id="material">1</field>
+                    </depends>
+                </field>
+                <field id="model" type="select" sortOrder="330" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Model</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="product">1</field>
+                    </depends>
+                </field>
+                <field id="model_attribute_id" type="select" sortOrder="331" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Model Attribute</label>
+                    <source_model>Infrangible\Core\Model\Config\Source\Attribute</source_model>
+                    <depends>
+                        <field id="product">1</field>
+                        <field id="model">1</field>
+                    </depends>
+                </field>
+                <field id="model_attribute_id_backup" type="select" sortOrder="332" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Model Attribute (Backup)</label>
+                    <source_model>Infrangible\Core\Model\Config\Source\Attribute</source_model>
+                    <depends>
+                        <field id="product">1</field>
+                        <field id="model">1</field>
+                    </depends>
+                </field>
+                <field id="mpn" type="select" sortOrder="340" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>mpn</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="product">1</field>
+                    </depends>
+                </field>
+                <field id="mpn_attribute_id" type="select" sortOrder="341" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>mpn Attribute</label>
+                    <source_model>Infrangible\Core\Model\Config\Source\Attribute</source_model>
+                    <depends>
+                        <field id="product">1</field>
+                        <field id="mpn">1</field>
+                    </depends>
+                </field>
+                <field id="mpn_attribute_id_backup" type="select" sortOrder="342" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>mpn Attribute (Backup)</label>
+                    <source_model>Infrangible\Core\Model\Config\Source\Attribute</source_model>
+                    <depends>
+                        <field id="product">1</field>
+                        <field id="mpn">1</field>
+                    </depends>
+                </field>
+                <field id="name" type="select" sortOrder="350" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Name</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="product">1</field>
+                    </depends>
+                </field>
+                <field id="name_attribute_id" type="select" sortOrder="351" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Name Attribute</label>
+                    <source_model>Infrangible\Core\Model\Config\Source\Attribute</source_model>
+                    <depends>
+                        <field id="product">1</field>
+                        <field id="name">1</field>
+                    </depends>
+                </field>
+                <field id="name_attribute_id_backup" type="select" sortOrder="352" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Name Attribute (Backup)</label>
+                    <source_model>Infrangible\Core\Model\Config\Source\Attribute</source_model>
+                    <depends>
+                        <field id="product">1</field>
+                        <field id="name">1</field>
+                    </depends>
+                </field>
+                <field id="weight" type="select" sortOrder="360" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Weight</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="product">1</field>
+                    </depends>
+                </field>
+                <field id="weight_attribute_id" type="select" sortOrder="361" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Weight Attribute</label>
+                    <source_model>Infrangible\Core\Model\Config\Source\Attribute</source_model>
+                    <depends>
+                        <field id="product">1</field>
+                        <field id="weight">1</field>
+                    </depends>
+                </field>
+                <field id="weight_attribute_id_backup" type="select" sortOrder="362" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Weight Attribute (Backup)</label>
+                    <source_model>Infrangible\Core\Model\Config\Source\Attribute</source_model>
+                    <depends>
+                        <field id="product">1</field>
+                        <field id="weight">1</field>
+                    </depends>
+                </field>
+                <field id="width" type="select" sortOrder="370" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Width</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="product">1</field>
+                    </depends>
+                </field>
+                <field id="width_attribute_id" type="select" sortOrder="371" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Width Attribute</label>
+                    <source_model>Infrangible\Core\Model\Config\Source\Attribute</source_model>
+                    <depends>
+                        <field id="product">1</field>
+                        <field id="width">1</field>
+                    </depends>
+                </field>
+                <field id="width_attribute_id_backup" type="select" sortOrder="372" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Width Attribute (Backup)</label>
+                    <source_model>Infrangible\Core\Model\Config\Source\Attribute</source_model>
+                    <depends>
+                        <field id="product">1</field>
+                        <field id="width">1</field>
+                    </depends>
+                </field>
+            </group>
+            <group id="open_graph" sortOrder="30" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Open Graph</label>
+                <field id="enable" type="select" sortOrder="10" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+            </group>
+            <group id="facebook" sortOrder="40" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Facebook</label>
+                <field id="enable" type="select" sortOrder="10" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="app_id" type="text" sortOrder="20" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>App Id</label>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+            </group>
+            <group id="twitter_card" sortOrder="50" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Twitter Card</label>
+                <field id="enable" type="select" sortOrder="10" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="user_name" type="text" sortOrder="20" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>User Name</label>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

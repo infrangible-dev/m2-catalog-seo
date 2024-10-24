@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+
+<!--
+ * @author      Andreas Knollmann
+ * @copyright   2014-2024 Softwareentwicklung Andreas Knollmann
+ * @license     http://www.opensource.org/licenses/mit-license.php MIT
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="view_block_abstract_to_html_after">
+        <observer name="infrangible_catalogseo" instance="Infrangible\CatalogSeo\Observer\ViewBlockAbstractToHtmlAfter"/>
+    </event>
+</config>

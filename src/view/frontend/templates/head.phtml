@@ -1,0 +1,43 @@
+<?php
+
+declare(strict_types=1);
+
+use Infrangible\CatalogSeo\Block\Head;
+
+/**
+ * @author      Andreas Knollmann
+ * @copyright   2014-2024 Softwareentwicklung Andreas Knollmann
+ * @license     http://www.opensource.org/licenses/mit-license.php MIT
+ */
+
+/** @var Head $block */
+?>
+<?php if ($block->addSchemaWebsiteData()): ?>
+    <script type="application/ld+json"><?php echo $block->getSchemaWebsiteData(); ?></script>
+<?php endif; ?>
+<?php if ($block->addSchemaOrganizationData()): ?>
+    <script type="application/ld+json"><?php echo $block->getSchemaOrganizationData(); ?></script>
+<?php endif; ?>
+<?php if ($block->addSchemaProductData()): ?>
+    <script type="application/ld+json"><?php echo $block->getSchemaProductData(); ?></script>
+<?php endif; ?>
+<?php if ($block->addOpenGraphData()): ?>
+    <?php if ($block->getOpenGraphType() != 'product'): ?>
+        <meta property="og:type" content="<?php echo $block->getOpenGraphType(); ?>"/>
+        <meta property="og:title" content="<?php echo $block->getTitle(); ?>"/>
+        <meta property="og:description" content="<?php echo $block->getDescription(); ?>"/>
+        <meta property="og:url" content="<?php echo $block->getSiteUrl(); ?>"/>
+        <meta property="og:image" content="<?php echo $block->getSiteLogo(); ?>"/>
+    <?php endif; ?>
+    <meta property="og:site_name" content="<?php echo $block->getSiteName(); ?>"/>
+<?php endif; ?>
+<?php if ($block->addFacebookData()): ?>
+    <meta property="fb:app_id" content="<?php echo $block->getFacebookAppId(); ?>"/>
+<?php endif; ?>
+<?php if ($block->addTwitterCardData()): ?>
+    <meta property="twitter:card" content="<?php echo $block->getTwitterCardType(); ?>"/>
+    <meta property="twitter:site" content="<?php echo $block->getTwitterCardUserName(); ?>"/>
+    <meta property="twitter:title" content="<?php echo $block->getTitle(); ?>"/>
+    <meta property="twitter:description" content="<?php echo $block->getDescription(); ?>"/>
+    <meta property="twitter:image" content="<?php echo $block->getSiteLogo(); ?>"/>
+<?php endif; ?>

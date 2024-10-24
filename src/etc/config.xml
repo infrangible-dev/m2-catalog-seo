@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+
+<!--
+ * @author      Andreas Knollmann
+ * @copyright   2014-2024 Softwareentwicklung Andreas Knollmann
+ * @license     http://www.opensource.org/licenses/mit-license.php MIT
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <infrangible_catalogseo>
+            <page>
+                <title_max_length>70</title_max_length>
+                <title_max_description>150</title_max_description>
+            </page>
+            <product>
+                <add_entity_id>0</add_entity_id>
+            </product>
+            <rich_snippets>
+                <website>1</website>
+                <organization_type>Store</organization_type>
+                <product>1</product>
+            </rich_snippets>
+            <open_graph>
+                <enable>0</enable>
+            </open_graph>
+            <facebook>
+                <enable>0</enable>
+            </facebook>
+            <twitter_card>
+                <enable>0</enable>
+            </twitter_card>
+        </infrangible_catalogseo>
+    </default>
+</config>
