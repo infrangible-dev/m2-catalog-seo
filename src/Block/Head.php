@@ -872,7 +872,7 @@ class Head extends Template
                     'catalog_product',
                     $attributeCode,
                     $this->variables->intValue($product->getId()),
-                    $this->storeHelper->getStore()->getId()
+                    $this->variables->intValue($this->storeHelper->getStore()->getId())
                 ) : null;
 
                 if (! $this->variables->isEmpty($value)) {
@@ -902,7 +902,7 @@ class Head extends Template
                         'catalog_product',
                         $backupAttributeCode,
                         $this->variables->intValue($product->getId()),
-                        $this->storeHelper->getStore()->getId()
+                        $this->variables->intValue($this->storeHelper->getStore()->getId())
                     ) : null;
 
                     if (! $this->variables->isEmpty($value)) {
