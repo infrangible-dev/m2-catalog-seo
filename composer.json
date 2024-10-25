@@ -2,7 +2,7 @@
     "name": "infrangible/m2-catalog-seo",
     "description": "Infrangible Magento 2 Catalog SEO",
     "type": "magento2-module",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "license": "MIT",
     "keywords": [
         "Magento"

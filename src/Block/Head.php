@@ -755,7 +755,7 @@ class Head extends Template
                                     'worstRating' => 0,
                                     'reviewCount' => $reviewData[ 'reviews_count' ],
                                     'ratingValue' => round(
-                                        $reviewData[ 'rating_summary' ],
+                                        floatval($reviewData[ 'rating_summary' ]),
                                         1
                                     )
                                 ];
@@ -766,7 +766,7 @@ class Head extends Template
                                     'worstRating' => 0,
                                     'reviewCount' => $reviewData[ 'reviews_count' ],
                                     'ratingValue' => round(
-                                        $reviewData[ 'rating_summary' ] / 20,
+                                        floatval($reviewData[ 'rating_summary' ]) / 20,
                                         1
                                     )
                                 ];
