@@ -871,7 +871,7 @@ class Head extends Template
                     $this->databaseHelper->getDefaultConnection(),
                     'catalog_product',
                     $attributeCode,
-                    $product->getId(),
+                    $this->variables->intValue($product->getId()),
                     $this->storeHelper->getStore()->getId()
                 ) : null;
 
@@ -901,7 +901,7 @@ class Head extends Template
                         $this->databaseHelper->getDefaultConnection(),
                         'catalog_product',
                         $backupAttributeCode,
-                        $product->getId(),
+                        $this->variables->intValue($product->getId()),
                         $this->storeHelper->getStore()->getId()
                     ) : null;
 
