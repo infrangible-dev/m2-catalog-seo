@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+
+<!--
+ * @author      Andreas Knollmann
+ * @copyright   2014-2024 Softwareentwicklung Andreas Knollmann
+ * @license     http://www.opensource.org/licenses/mit-license.php MIT
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="infrangible_sitemap_attributes_category">
+        <observer name="infrangible_catalogseo" instance="Infrangible\CatalogSeo\Observer\InfrangibleSitemapAttributesCategory"/>
+    </event>
+    <event name="infrangible_sitemap_transform_category">
+        <observer name="infrangible_catalogseo" instance="Infrangible\CatalogSeo\Observer\InfrangibleSitemapTransformCategory"/>
+    </event>
+    <event name="infrangible_sitemap_transform_cms">
+        <observer name="infrangible_catalogseo" instance="Infrangible\CatalogSeo\Observer\InfrangibleSitemapTransformCms"/>
+    </event>
+    <event name="infrangible_sitemap_transform_product">
+        <observer name="infrangible_catalogseo" instance="Infrangible\CatalogSeo\Observer\InfrangibleSitemapTransformProduct"/>
+    </event>
+</config>
